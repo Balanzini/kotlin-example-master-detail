@@ -3,6 +3,8 @@
     package="com.balanza.android.harrypotter"
     >
 
+  <uses-permission android:name="android.permission.INTERNET"/>
+
   <application
       android:name=".app.base.BaseApp"
       android:allowBackup="true"

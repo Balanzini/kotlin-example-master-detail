@@ -11,6 +11,6 @@ interface CharacterDataSource {
 
     interface OnCharacterAvailable{
         fun onCharacterAvailable(characterList : List<CharacterBasic>)
-        fun onError()
+        fun onError(message : String?)
     }
 }

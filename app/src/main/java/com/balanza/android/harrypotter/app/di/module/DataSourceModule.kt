@@ -2,6 +2,7 @@ package com.balanza.android.harrypotter.app.di.module
 
 import com.balanza.android.harrypotter.data.character.CharacterDataSource
 import com.balanza.android.harrypotter.data.character.retrofit.CharacterRetrofitSource
+import com.balanza.android.harrypotter.data.character.retrofit.mapper.CharacterMapper
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 @Module
 class DataSourceModule {
     @Provides
-    fun provideDataSource() : CharacterDataSource{
-        return CharacterRetrofitSource()
+    fun provideDataSource(characterMapper: CharacterMapper) : CharacterDataSource{
+        return CharacterRetrofitSource(characterMapper)
     }
 }

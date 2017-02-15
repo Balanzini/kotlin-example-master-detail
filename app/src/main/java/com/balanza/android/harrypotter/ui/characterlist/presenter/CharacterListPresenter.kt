@@ -8,6 +8,6 @@ import com.balanza.android.harrypotter.ui.characterlist.view.CharacterListView
  */
 abstract class CharacterListPresenter : BasePresenter<CharacterListView>() {
 
-    abstract fun check()
+    abstract fun getCharacters()
 
 }

@@ -10,6 +10,6 @@ interface CharacterRepository {
 
     interface OnCharacterAvailable {
         fun onSuccess(characterList: List<CharacterBasic>)
-        fun onError()
+        fun onError(message : String?)
     }
 }

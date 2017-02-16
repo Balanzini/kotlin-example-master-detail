@@ -9,4 +9,9 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
+  <style name="ListViewTheme"
+      parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimaryDark">@color/primary_color_list</item>
+  </style>
+
 </resources>

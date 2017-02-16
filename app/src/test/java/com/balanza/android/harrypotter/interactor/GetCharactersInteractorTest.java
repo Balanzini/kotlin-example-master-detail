@@ -38,7 +38,7 @@ public class GetCharactersInteractorTest {
         mock(GetAllCharacters.OnCharactersAvailable.class);
 
     GetAllCharacters getCharacterInteractor = new GetAllCharactersImp(mockedCharacterRepository);
-    getCharacterInteractor.getAllCharacters(mockedCallback);
+    getCharacterInteractor.getAllCharacters(false, mockedCallback);
 
     verify(mockedCallback).onSuccess(ArgumentMatchers.<CharacterBasic>anyList());
   }

@@ -7,7 +7,7 @@ import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
  */
 interface GetAllCharacters {
 
-  fun getAllCharacters(onCharactersAvailable: OnCharactersAvailable)
+  fun getAllCharacters(refresh : Boolean, onCharactersAvailable: OnCharactersAvailable)
 
   interface OnCharactersAvailable {
     fun onSuccess(characters: List<CharacterBasic>)

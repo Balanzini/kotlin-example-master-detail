@@ -21,6 +21,10 @@ class CharacterRepositoryImp(private val dataSource : CharacterDataSource) : Cha
         }
     }
 
+    override fun clear() {
+        characterList.clear()
+    }
+
     private fun fetchCharacters(onCharacterAvailable : CharacterRepository.OnCharacterAvailable){
         dataSource.getAllCharacter(object : CharacterDataSource.OnCharacterAvailable{
             override fun onCharacterAvailable(characterListResource: List<CharacterBasic>) {

@@ -12,9 +12,16 @@ class CharacterListPresenterImp(private val navigator: Navigator,
                                 private val getAllCharacters: GetAllCharacters) : CharacterListPresenter() {
 
   override fun getCharacters() {
-    getAllCharacters.getAllCharacters(object : GetAllCharacters.OnCharactersAvailable {
+    getCharacters(false)
+  }
+
+  override fun refreshCharacters() {
+    getCharacters(true)
+  }
+
+  internal fun getCharacters(refresh: Boolean) {
+    getAllCharacters.getAllCharacters(refresh, object : GetAllCharacters.OnCharactersAvailable {
       override fun onSuccess(characters: List<CharacterBasic>) {
-        Log.i("balanzaa", "on success: ${characters.size}" )
         view?.onCharactersAvailable(characters)
       }
 

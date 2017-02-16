@@ -8,6 +8,8 @@ import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
 interface CharacterRepository {
     fun getAllCharacters(onCharacterAvailable: OnCharacterAvailable)
 
+    fun clear()
+
     interface OnCharacterAvailable {
         fun onSuccess(characterList: List<CharacterBasic>)
         fun onError(message : String?)

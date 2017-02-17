@@ -21,18 +21,21 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>(
 
   internal var characterList = ArrayList<CharacterBasic>()
   internal var context: Context? = null
+  private var onItemClick: OnItemClick? = null
 
   override fun onBindViewHolder(holder: CharacterHolder, position: Int) {
-    holder.tvName.text = characterList[position].name
-    holder.tvHouse.text = characterList[position].house
-    Glide.with(context).load(characterList[position].imageUrl).centerCrop().into(holder.ivPicture)
+    val characterInstance = characterList[position]
+    holder.tvName.text = characterInstance.name
+    holder.tvHouse.text = characterInstance.house.name
+    Glide.with(context).load(characterInstance.imageUrl).centerCrop().into(holder.ivPicture)
 
-    when (characterList[position].houseId) {
-      0 -> holder.rlBackgroundItem.setBackgroundResource(R.drawable.gryffindor_background)
-      1 -> holder.rlBackgroundItem.setBackgroundResource(R.drawable.hufflepuff_background)
-      2 -> holder.rlBackgroundItem.setBackgroundResource(R.drawable.ravenclaw_background)
-      3 -> holder.rlBackgroundItem.setBackgroundResource(R.drawable.slytherin_background)
-    }
+    holder.rlBackgroundItem.setBackgroundResource(characterInstance.house.background)
+
+    holder.rlBackgroundItem.setOnClickListener({
+        onItemClick?.onClick(position)
+
+    })
+
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterHolder {
@@ -50,6 +53,10 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>(
     notifyDataSetChanged()
   }
 
+  fun setOnItemClick(onItemClick: OnItemClick) {
+    this.onItemClick = onItemClick
+  }
+
   class CharacterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var tvName = itemView.findViewById(R.id.tv_item_name) as TextView
@@ -57,5 +64,9 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>(
     var ivPicture = itemView.findViewById(R.id.iv_item_image) as ImageView
     var rlBackgroundItem = itemView.findViewById(R.id.rl_item_background) as RelativeLayout
 
+  }
+
+  interface OnItemClick {
+    fun onClick(position: Int)
   }
 }

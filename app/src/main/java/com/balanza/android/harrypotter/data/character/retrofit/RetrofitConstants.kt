@@ -7,5 +7,6 @@ class RetrofitConstants {
   companion object {
     const val API_URL = "http://demo2330631.mockable.io"
     const val API_ALL_CHARACTER = "/hpcharacters"
+    const val API_GET_CHARACTER = "/getcharacter"
   }
 }

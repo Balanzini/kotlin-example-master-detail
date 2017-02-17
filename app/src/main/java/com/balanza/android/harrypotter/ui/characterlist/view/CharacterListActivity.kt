@@ -3,8 +3,6 @@ package com.balanza.android.harrypotter.ui.characterlist.view
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
-import android.widget.TextView
-import butterknife.BindView
 import butterknife.ButterKnife
 import com.balanza.android.harrypotter.R
 import com.balanza.android.harrypotter.app.base.BaseActivity
@@ -51,8 +49,13 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
 
   private fun initOptionsAdapter() {
     rvCharacters.adapter = adapter
-
+    adapter.setOnItemClick(object : CharacterAdapter.OnItemClick {
+      override fun onClick(position: Int) {
+        presenter.onItemClick(position)
+      }
+    })
   }
+
 
   override fun doInjection() {
     val activityComponent = DaggerActivityComponent.builder()

@@ -34,7 +34,7 @@ class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
 
     fun buildApplicationComponent() {
         applicationComponent = DaggerApplicationComponent.builder().applicationModule(ApplicationModule(this)).build()
-        applicationComponent?.inject(this)
+        applicationComponent.inject(this)
     }
 
 //    fun getApplicationComponent(): ApplicationComponent? {
@@ -57,7 +57,7 @@ class BaseApp : Application(), Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityResumed(p0: Activity?) {
-        navigator?.activity = p0
+        navigator.activity = p0
     }
 
     override fun onActivityPaused(p0: Activity?) {

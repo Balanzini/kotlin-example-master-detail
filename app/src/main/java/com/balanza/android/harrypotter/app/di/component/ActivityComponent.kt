@@ -5,6 +5,7 @@ import com.balanza.android.harrypotter.app.di.module.DataSourceModule
 import com.balanza.android.harrypotter.app.di.module.InteractorModule
 import com.balanza.android.harrypotter.app.di.module.PresenterModule
 import com.balanza.android.harrypotter.data.character.retrofit.mapper.CharacterMapper
+import com.balanza.android.harrypotter.ui.characterdetail.view.CharacterDetailActivity
 import com.balanza.android.harrypotter.ui.characterlist.view.CharacterListActivity
 import dagger.Component
 
@@ -16,4 +17,5 @@ import dagger.Component
     modules = arrayOf(PresenterModule::class, InteractorModule::class))
 interface ActivityComponent {
   fun inject(characterListActivity: CharacterListActivity)
+  fun inject(characterDetailActivity: CharacterDetailActivity)
 }

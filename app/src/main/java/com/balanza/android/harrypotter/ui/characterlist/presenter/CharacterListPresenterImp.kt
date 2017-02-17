@@ -31,4 +31,8 @@ class CharacterListPresenterImp(private val navigator: Navigator,
 
     })
   }
+
+  override fun onItemClick(position: Int) {
+    navigator.goToDetails(position)
+  }
 }

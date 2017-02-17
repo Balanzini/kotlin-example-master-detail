@@ -11,4 +11,6 @@ abstract class CharacterListPresenter : BasePresenter<CharacterListView>() {
   abstract fun getCharacters()
 
   abstract fun refreshCharacters()
+
+  abstract fun onItemClick(position : Int)
 }

@@ -9,7 +9,9 @@ import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
 interface CharacterRepository {
   fun getAllCharacters(onCharacterAvailable: OnCharacterAvailable)
 
-  fun getCharacter(characterId: Int, onCharacterDetails: OnCharacterDetails)
+  fun fetchCharacter(characterId: Int, onCharacterDetails: OnCharacterDetails)
+
+  fun getCharacter(characterId: Int): CharacterDetail?
 
   fun clear()
 

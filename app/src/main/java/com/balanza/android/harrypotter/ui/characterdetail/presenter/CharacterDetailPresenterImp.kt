@@ -13,7 +13,8 @@ class CharacterDetailPresenterImp(
     getCharacterInteractor.getCharacter(characterId, object : GetCharacter.OnCharacterAvailable {
       override fun onSuccess(character: CharacterDetail) {
         view?.onCharacterAvailable(character.name, character.last_name, character.birth,
-            character.house.detailBackground)
+            character.gender, character.house.name, character.wand_description, character.patronus,
+            character.urlImage, character.house.detailBackground, character.house.primaryColor)
       }
 
       override fun onError(message: String?) {

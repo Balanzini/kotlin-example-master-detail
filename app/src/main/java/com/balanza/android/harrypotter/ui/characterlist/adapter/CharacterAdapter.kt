@@ -2,6 +2,7 @@ package com.balanza.android.harrypotter.ui.characterlist.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,20 +20,39 @@ import java.util.*
  */
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>() {
 
-  internal var characterList = ArrayList<CharacterBasic>()
-  internal var context: Context? = null
+  private var characterList = ArrayList<CharacterBasic>()
+  private var context: Context? = null
   private var onItemClick: OnItemClick? = null
+  private var positionSelected: Int = -1
+  private var clicked = false
 
   override fun onBindViewHolder(holder: CharacterHolder, position: Int) {
     val characterInstance = characterList[position]
     holder.tvName.text = characterInstance.name
     holder.tvHouse.text = characterInstance.house.name
     Glide.with(context).load(characterInstance.imageUrl).centerCrop().into(holder.ivPicture)
-
     holder.rlBackgroundItem.setBackgroundResource(characterInstance.house.background)
 
+    if (clicked) {
+      holder.vShadow.visibility = View.VISIBLE
+      val color : Int
+      if (positionSelected == position) {
+        color = context?.resources?.getColor(R.color.item_selected_shadow) ?: -1
+      } else {
+        color = context?.resources?.getColor(R.color.item_shadow) ?: -1
+
+      }
+      holder.vShadow.setBackgroundColor(color)
+    }
+    else{
+      holder.vShadow.visibility = View.GONE
+    }
+
     holder.rlBackgroundItem.setOnClickListener({
-        onItemClick?.onClick(position)
+      clicked = true
+      positionSelected = position
+      onItemClick?.onClick(position)
+      notifyDataSetChanged()
 
     })
 
@@ -57,12 +77,18 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>(
     this.onItemClick = onItemClick
   }
 
+  fun reset(){
+    clicked = false
+    notifyDataSetChanged()
+  }
+
   class CharacterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     var tvName = itemView.findViewById(R.id.tv_item_name) as TextView
     var tvHouse = itemView.findViewById(R.id.tv_item_house) as TextView
     var ivPicture = itemView.findViewById(R.id.iv_item_image) as ImageView
     var rlBackgroundItem = itemView.findViewById(R.id.rl_item_background) as RelativeLayout
+    var vShadow = itemView.findViewById(R.id.v_shadow) as View
 
   }
 

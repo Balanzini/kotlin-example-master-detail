@@ -2,6 +2,8 @@ package com.balanza.android.harrypotter.ui.characterlist.presenter
 
 import android.util.Log
 import com.balanza.android.harrypotter.app.navigator.Navigator
+import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDetail
+import com.balanza.android.harrypotter.domain.interactor.character.FetchCharacter
 import com.balanza.android.harrypotter.domain.interactor.character.GetAllCharacters
 import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
 
@@ -9,7 +11,8 @@ import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
  * Created by balanza on 13/02/17.
  */
 class CharacterListPresenterImp(private val navigator: Navigator,
-                                private val getAllCharacters: GetAllCharacters) : CharacterListPresenter() {
+                                private val getAllCharacters: GetAllCharacters,
+                                private val fetchCharacter: FetchCharacter) : CharacterListPresenter() {
 
   override fun getCharacters() {
     getCharacters(false)
@@ -26,13 +29,20 @@ class CharacterListPresenterImp(private val navigator: Navigator,
       }
 
       override fun onError(message: String?) {
-        Log.i("balanzaa", "presenter error")
       }
 
     })
   }
 
   override fun onItemClick(position: Int) {
-    navigator.goToDetails(position)
+    fetchCharacter.fetchCharacter(position, object : FetchCharacter.OnCharacterAvailable {
+      override fun onSuccess(character: CharacterDetail) {
+        navigator.goToDetails(character.characterId)
+      }
+
+      override fun onError(message: String?) {
+      }
+
+    })
   }
 }

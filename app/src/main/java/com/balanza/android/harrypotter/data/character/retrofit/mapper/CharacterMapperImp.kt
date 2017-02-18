@@ -18,9 +18,10 @@ class CharacterMapperImp : CharacterMapper {
 
   override fun characterApiToCharacterModel(
       characterDetailApi: CharacterDetailApi): CharacterDetail = CharacterDetail(
-      characterDetailApi.name, characterDetailApi.last_name, characterDetailApi.birth,
-      characterDetailApi.gender, HouseFactory.createHouse(characterDetailApi.house),
-      characterDetailApi.wand_description, characterDetailApi.patronus)
+      characterDetailApi.characterId, characterDetailApi.name, characterDetailApi.last_name,
+      characterDetailApi.birth, characterDetailApi.gender,
+      HouseFactory.createHouse(characterDetailApi.house), characterDetailApi.wand_description,
+      characterDetailApi.patronus)
 
   private fun singleCharacterApiToCharacterModel(characterApi: CharacterBasicRetrofit) =
       CharacterBasic(characterApi.characterId, characterApi.name,

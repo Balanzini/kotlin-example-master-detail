@@ -1,7 +1,7 @@
 package com.balanza.android.harrypotter.domain.model.factory
 
 import android.util.Log
-import com.balanza.android.harrypotter.app.HouseNotExistException
+import com.balanza.android.harrypotter.app.exception.HouseNotExistException
 import com.balanza.android.harrypotter.domain.model.house.*
 
 /**

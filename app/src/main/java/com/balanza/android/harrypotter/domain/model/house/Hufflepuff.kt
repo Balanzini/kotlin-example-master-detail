@@ -13,4 +13,7 @@ class Hufflepuff : House() {
 
   override val detailBackground: Int
     get() = R.drawable.hufflepuff_details_bg
+
+  override val primaryColor: Int
+    get() = R.color.hufflepuff_primary
 }

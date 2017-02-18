@@ -40,6 +40,11 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
     presenter.view = this
     presenter.getCharacters()
   }
+
+  override fun onResume() {
+    super.onResume()
+    adapter.reset()
+  }
   // endregion
 
   override fun onCharactersAvailable(characterList: List<CharacterBasic>) {

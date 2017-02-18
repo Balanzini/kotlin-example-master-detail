@@ -15,4 +15,6 @@ class Ravenclaw : House() {
   override val detailBackground: Int
     get() = R.drawable.ravenclaw_detail_bg
 
+  override val primaryColor: Int
+    get() = R.color.ravenclaw_primary
 }

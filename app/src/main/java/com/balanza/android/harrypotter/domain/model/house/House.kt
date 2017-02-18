@@ -8,4 +8,5 @@ abstract class House {
   abstract val background : Int
   abstract val name : String
   abstract val detailBackground : Int
+  abstract val primaryColor : Int
 }

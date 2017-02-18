@@ -18,7 +18,7 @@ import static org.mockito.Mockito.when;
  * Created by balanza on 15/02/17.
  */
 
-public class GetCharactersInteractorTest {
+public class FetchCharactersInteractorTest {
 
   @Test
   public void getComicInteractorShouldCallTheCallbackOnSuccess() {

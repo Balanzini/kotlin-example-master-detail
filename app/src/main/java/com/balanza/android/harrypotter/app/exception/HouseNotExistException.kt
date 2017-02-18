@@ -1,4 +1,4 @@
-package com.balanza.android.harrypotter.app
+package com.balanza.android.harrypotter.app.exception
 
 /**
  * Created by balanza on 17/02/17.

@@ -15,4 +15,7 @@ class Gryffindor : House() {
 
   override val detailBackground: Int
     get() = R.drawable.gryffindor_detail_bg
+
+  override val primaryColor: Int
+    get() = R.color.gryffindor_primary
 }

@@ -1,6 +1,7 @@
 package com.balanza.android.harrypotter.domain.repository.character
 
 import android.util.Log
+import com.balanza.android.harrypotter.app.exception.CharacterExistException
 import com.balanza.android.harrypotter.data.character.CharacterDataSource
 import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDetail
 import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
@@ -11,7 +12,8 @@ import java.util.*
  */
 class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : CharacterRepository {
 
-  var characterList = ArrayList<CharacterBasic>()
+  private var characterList = ArrayList<CharacterBasic>()
+  private var currentCharacterDetail: CharacterDetail? = null
 
   override fun getAllCharacters(onCharacterAvailable: CharacterRepository.OnCharacterAvailable) {
     if (characterList.isEmpty()) {
@@ -21,10 +23,13 @@ class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : Char
     }
   }
 
-  override fun getCharacter(characterId: Int,
-                            onCharacterDetails: CharacterRepository.OnCharacterDetails) {
+  override fun fetchCharacter(characterId: Int,
+                              onCharacterDetails: CharacterRepository.OnCharacterDetails) {
     dataSource.getCharacter(characterId, object : CharacterDataSource.OnSingleCharacterAvailable {
       override fun onSingleCharacterAvailable(characterDetail: CharacterDetail) {
+        currentCharacterDetail = characterDetail
+        val characterBasic = getCharacterById(characterDetail.characterId)
+        currentCharacterDetail?.urlImage = characterBasic.imageUrl
         onCharacterDetails.onCharacterDetailsAvailable(characterDetail)
       }
 
@@ -33,6 +38,18 @@ class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : Char
       }
 
     })
+  }
+
+  override fun getCharacter(characterId: Int): CharacterDetail? {
+    return currentCharacterDetail
+
+  }
+
+  private fun getCharacterById(characterId : Int) : CharacterBasic{
+    characterList
+        .filter { characterId == it.characterId }
+        .forEach { return it }
+    throw CharacterExistException(characterId)
   }
 
   override fun clear() {

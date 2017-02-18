@@ -13,4 +13,7 @@ class Slytherin : House(){
 
   override val detailBackground: Int
     get() = R.drawable.slytherin_details_bg
+
+  override val primaryColor: Int
+    get() = R.color.slytherin_primary
 }

@@ -7,55 +7,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
 import com.balanza.android.harrypotter.R
 import com.balanza.android.harrypotter.domain.model.character.CharacterBasic
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.character_list_item.view.*
 import java.util.*
 
 /**
  * Created by balanza on 15/02/17.
  */
-class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>() {
+class CharacterAdapter(
+    val listener: (CharacterBasic) -> Unit) : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>() {
 
   private var characterList = ArrayList<CharacterBasic>()
   private var context: Context? = null
-  private var onItemClick: OnItemClick? = null
   private var positionSelected: Int = -1
-  private var clicked = false
+  private var clicked: Boolean = false
 
   override fun onBindViewHolder(holder: CharacterHolder, position: Int) {
     val characterInstance = characterList[position]
-    holder.tvName.text = characterInstance.name
-    holder.tvHouse.text = characterInstance.house.name
-    Glide.with(context).load(characterInstance.imageUrl).centerCrop().into(holder.ivPicture)
-    holder.rlBackgroundItem.setBackgroundResource(characterInstance.house.background)
-
-    if (clicked) {
-      holder.vShadow.visibility = View.VISIBLE
-      val color : Int
-      if (positionSelected == position) {
-        color = context?.resources?.getColor(R.color.item_selected_shadow) ?: -1
-      } else {
-        color = context?.resources?.getColor(R.color.item_shadow) ?: -1
-
-      }
-      holder.vShadow.setBackgroundColor(color)
-    }
-    else{
-      holder.vShadow.visibility = View.GONE
-    }
-
-    holder.rlBackgroundItem.setOnClickListener({
+    holder.bind(characterInstance, clicked, positionSelected, position) {
       clicked = true
       positionSelected = position
-      onItemClick?.onClick(position)
+      listener(it)
       notifyDataSetChanged()
-
-    })
-
+    }
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterHolder {
@@ -73,26 +49,42 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterHolder>(
     notifyDataSetChanged()
   }
 
-  fun setOnItemClick(onItemClick: OnItemClick) {
-    this.onItemClick = onItemClick
-  }
-
-  fun reset(){
+  fun reset() {
     clicked = false
     notifyDataSetChanged()
   }
 
   class CharacterHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    var tvName = itemView.findViewById(R.id.tv_item_name) as TextView
-    var tvHouse = itemView.findViewById(R.id.tv_item_house) as TextView
-    var ivPicture = itemView.findViewById(R.id.iv_item_image) as ImageView
-    var rlBackgroundItem = itemView.findViewById(R.id.rl_item_background) as RelativeLayout
-    var vShadow = itemView.findViewById(R.id.v_shadow) as View
+    fun ImageView.loadUrl(url: String) {
+      Glide.with(context).load(url).centerCrop().into(iv_item_image)
+    }
+    
+    fun bind(item: CharacterBasic, clicked: Boolean, positionSelected: Int, position: Int,
+             listener: (CharacterBasic) -> Unit) = with(itemView) {
 
-  }
+      tv_item_name.text = item.name
+      tv_item_house.text = item.house.name
+      iv_item_image.loadUrl(item.imageUrl)
 
-  interface OnItemClick {
-    fun onClick(position: Int)
+      rl_item_background.setBackgroundResource(item.house.background)
+
+      if (clicked) {
+        v_shadow.visibility = View.VISIBLE
+        val color: Int
+        if (positionSelected === position) {
+          color = context?.resources?.getColor(R.color.item_selected_shadow) ?: -1
+        } else {
+          color = context?.resources?.getColor(R.color.item_shadow) ?: -1
+
+        }
+        v_shadow.setBackgroundColor(color)
+      } else {
+        v_shadow.visibility = View.GONE
+      }
+
+      setOnClickListener { listener(item) }
+    }
+
   }
 }

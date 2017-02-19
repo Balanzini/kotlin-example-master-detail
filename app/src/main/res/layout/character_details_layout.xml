@@ -41,46 +41,6 @@
         android:layout_gravity="center"
         />
 
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_margin="4dp"-->
-        <!--&gt;-->
-      <!--<TextView-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="@string/detail_name"-->
-          <!--style="@style/TitlesTextAppearance"-->
-          <!--/>-->
-      <!--<TextView-->
-          <!--android:id="@+id/tv_detail_name"-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--style="@style/ValuesTextAppearance"-->
-          <!--/>-->
-    <!--</LinearLayout>-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_margin="4dp"-->
-        <!--&gt;-->
-      <!--<TextView-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="@string/detail_last_name"-->
-          <!--style="@style/TitlesTextAppearance"-->
-          <!--/>-->
-      <!--<TextView-->
-          <!--android:id="@+id/tv_detail_last_name"-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--style="@style/ValuesTextAppearance"-->
-          <!--/>-->
-    <!--</LinearLayout>-->
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

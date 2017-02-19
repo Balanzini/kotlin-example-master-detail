@@ -3,7 +3,6 @@ package com.balanza.android.harrypotter.ui.characterlist.view
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.RecyclerView
-import butterknife.ButterKnife
 import com.balanza.android.harrypotter.R
 import com.balanza.android.harrypotter.app.base.BaseActivity
 import com.balanza.android.harrypotter.app.base.BaseApp
@@ -27,7 +26,6 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.character_list_layout)
-    ButterKnife.bind(this)
 
     rvCharacters = findViewById(R.id.rv_character_list) as RecyclerView
     srlMainLayout = findViewById(R.id.srl_main_swipe_layout) as SwipeRefreshLayout

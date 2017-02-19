@@ -20,7 +20,6 @@ class CharacterDetailActivity : BaseActivity(), CharacterDetailView {
   @Inject lateinit var presenter: CharacterDetailPresenter
 
   private lateinit var tvName: TextView
-//  private lateinit var tvLastName: TextView
   private lateinit var tvBirth: TextView
   private lateinit var ivBackground: ImageView
   private lateinit var ivProfile: ImageView
@@ -34,7 +33,6 @@ class CharacterDetailActivity : BaseActivity(), CharacterDetailView {
     setContentView(R.layout.character_details_layout)
 
     tvName = findViewById(R.id.tv_detail_name) as TextView
-//    tvLastName = findViewById(R.id.tv_detail_last_name) as TextView
     tvBirth = findViewById(R.id.tv_detail_birth) as TextView
     ivBackground = findViewById(R.id.iv_details_background) as ImageView
     ivProfile = findViewById(R.id.iv_detail_image_profile) as ImageView
@@ -53,7 +51,6 @@ class CharacterDetailActivity : BaseActivity(), CharacterDetailView {
                                     house: String, wandDescription: String, patronus: String,
                                     urlImage: String, background: Int, primary: Int) {
     tvName.text = "$name $lastName"
-//    tvLastName.text = lastName
     tvBirth.text = birth
     tvGender.text = gender
     tvHouse.text = house

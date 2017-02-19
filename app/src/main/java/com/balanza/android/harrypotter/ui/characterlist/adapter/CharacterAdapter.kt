@@ -59,7 +59,7 @@ class CharacterAdapter(
     fun ImageView.loadUrl(url: String) {
       Glide.with(context).load(url).centerCrop().into(iv_item_image)
     }
-    
+
     fun bind(item: CharacterBasic, clicked: Boolean, positionSelected: Int, position: Int,
              listener: (CharacterBasic) -> Unit) = with(itemView) {
 

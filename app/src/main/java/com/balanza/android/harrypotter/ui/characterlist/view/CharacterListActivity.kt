@@ -1,8 +1,6 @@
 package com.balanza.android.harrypotter.ui.characterlist.view
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.RecyclerView
 import com.balanza.android.harrypotter.R
 import com.balanza.android.harrypotter.app.base.BaseActivity
 import com.balanza.android.harrypotter.app.base.BaseApp
@@ -17,7 +15,7 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
 
   @Inject lateinit var presenter: CharacterListPresenter
 
-  private var adapter = CharacterAdapter{
+  private var adapter = CharacterAdapter {
     presenter.onItemClick(it.characterId)
   }
 
@@ -49,7 +47,6 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
   private fun initOptionsAdapter() {
     rv_character_list.adapter = adapter
   }
-
 
   override fun doInjection() {
     val activityComponent = DaggerActivityComponent.builder()

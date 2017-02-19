@@ -16,6 +16,7 @@
     <activity
         android:name=".ui.characterlist.view.CharacterListActivity"
         android:theme="@style/ListViewTheme"
+        android:screenOrientation="portrait"
         >
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -23,7 +24,10 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ui.characterdetail.view.CharacterDetailActivity"/>
+    <activity
+        android:name=".ui.characterdetail.view.CharacterDetailActivity"
+        android:screenOrientation="portrait"
+        />
   </application>
 
 </manifest>

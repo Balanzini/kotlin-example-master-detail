@@ -9,7 +9,6 @@ import com.balanza.android.harrypotter.domain.model.house.*
  */
 object HouseFactory{
   fun createHouse(houseId : Int)  : House {
-    Log.i("balanzaa", " house id $houseId")
     when (houseId) {
       0 -> return Gryffindor()
       1 -> return Hufflepuff()

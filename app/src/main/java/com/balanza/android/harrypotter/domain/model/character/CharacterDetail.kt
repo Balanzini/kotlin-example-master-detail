@@ -7,5 +7,4 @@ import com.balanza.android.harrypotter.domain.model.house.House
  */
 class CharacterDetail(val characterId: Int, val name: String, val last_name: String,
                       val birth: String, val gender: String, val house: House,
-                      val wand_description: String, val patronus: String, var urlImage : String = ""){
-}
+                      val wand_description: String, val patronus: String, var urlImage : String = "")

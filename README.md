@@ -1,8 +1,8 @@
 # Kotlin Master Detail Example
 
-In developing progress...
+The application is a basic example of Clean Architecture with MVP, to learn and practice the use of the programming language kotlin.
 
-The application is an example of Clean Architecture with MVP ( Model-View-Presenter).
+In developing progress.
 
 ### Built with:
 

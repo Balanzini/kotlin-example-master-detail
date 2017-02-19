@@ -18,4 +18,5 @@ class Gryffindor : House() {
 
   override val primaryColor: Int
     get() = R.color.gryffindor_primary
+
 }

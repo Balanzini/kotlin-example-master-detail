@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- BASIC -->
+  <color name="white">#ffffff</color>
+
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#0C0B09</color>
+  <color name="colorAccent">#FF4081</color>
+
+  <!-- LIST VIEW -->
+  <color name="primary_color_list">#0C0B09</color>
+  <color name="item_shadow">#d6000000</color>
+  <color name="item_selected_shadow">#8e000000</color>
+
+  <!-- DETAILS -->
+  <color name="detail_shadow">#8e000000</color>
+
+  <!-- HOUSE STATUS BAR-->
+  <color name="gryffindor_primary">#4B0100</color>
+  <color name="hufflepuff_primary">#CB9800</color>
+  <color name="ravenclaw_primary">#006787</color>
+  <color name="slytherin_primary">#688904</color>
+</resources>

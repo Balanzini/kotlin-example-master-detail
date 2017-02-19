@@ -13,7 +13,14 @@ The application is an example of Clean Architecture with MVP ( Model-View-Presen
 
 ## Screenshots
 
-![alt text](art/main.png "Description goes here")
+![alt text](art/main.png "Main view")
+![alt text](art/detail1.png "Detail view")
+![alt text](art/detail2.png "Detail view")
+
+### Change Log
+
+## V1.0
+* Basic example of Master-Detail
 
 ### Develop by Jose Luis Balanza
 

@@ -1,0 +1,12 @@
+<resources>
+  <string name="app_name">Harry Potter</string>
+
+  <!-- DETAILS -->
+  <string name="detail_name">Name: </string>
+  <string name="detail_last_name">Last name: </string>
+  <string name="detail_birth">Date of Birth: </string>
+  <string name="detail_gender">Gender: </string>
+  <string name="detail_house">House: </string>
+  <string name="detail_wand_description">Wand desc.: </string>
+  <string name="detail_patronus">Patronus: </string>
+</resources>

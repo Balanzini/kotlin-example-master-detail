@@ -25,18 +25,10 @@ class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : Char
 
   override fun fetchCharacter(characterId: Int,
                               onCharacterDetails: CharacterRepository.OnCharacterDetails) {
-    dataSource.getCharacter(characterId, object : CharacterDataSource.OnSingleCharacterAvailable {
-      override fun onSingleCharacterAvailable(characterDetail: CharacterDetail) {
-        currentCharacterDetail = characterDetail
-        val characterBasic = getCharacterById(characterDetail.characterId)
-        currentCharacterDetail?.urlImage = characterBasic.imageUrl
-        onCharacterDetails.onCharacterDetailsAvailable(characterDetail)
-      }
-
-      override fun onError(message: String?) {
-        onCharacterDetails.onError(message)
-      }
-
+    dataSource.getCharacter(characterId, {
+      onCharacterDetails.onCharacterDetailsAvailable(it)
+    }, {
+      onCharacterDetails.onError(it)
     })
   }
 

@@ -6,10 +6,6 @@ import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDe
  * Created by balanza on 17/02/17.
  */
 interface GetCharacter {
-  fun getCharacter(characterId: Int, onCharacterAvailable: OnCharacterAvailable)
-
-  interface OnCharacterAvailable {
-    fun onSuccess(character: CharacterDetail)
-    fun onError(message: String?)
-  }
+  fun getCharacter(characterId: Int, callbackSuccess: (CharacterDetail) -> Unit,
+                   callbackError: (String) -> Unit)
 }

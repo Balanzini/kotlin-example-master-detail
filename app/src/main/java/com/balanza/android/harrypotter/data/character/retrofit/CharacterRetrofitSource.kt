@@ -3,6 +3,7 @@ package com.balanza.android.harrypotter.data.character.retrofit
 import com.balanza.android.harrypotter.data.character.CharacterDataSource
 import com.balanza.android.harrypotter.data.character.retrofit.mapper.CharacterMapper
 import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterBasicRetrofit
+import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDetail
 import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDetailApi
 import retrofit2.*
 
@@ -42,24 +43,23 @@ class CharacterRetrofitSource(val characterMapper: CharacterMapper) : CharacterD
     })
   }
 
-  override fun getCharacter(characterId: Int,
-                            onSingleCharacterAvailable: CharacterDataSource.OnSingleCharacterAvailable) {
+  override fun getCharacter(characterId: Int, onSuccess: (CharacterDetail) -> Unit,
+                            onError: (String?) -> Unit) {
     val call = characterService.getCharacter(characterId)
 
     call.enqueue(object : Callback<CharacterDetailApi> {
       override fun onResponse(call: Call<CharacterDetailApi>?,
                               response: Response<CharacterDetailApi>) {
         if (response.isSuccessful) {
-          onSingleCharacterAvailable.onSingleCharacterAvailable(
-              characterMapper.characterApiToCharacterModel(response.body()))
+          onSuccess(characterMapper.characterApiToCharacterModel(response.body()))
         }
         else{
-          onSingleCharacterAvailable.onError(response.errorBody().string())
+          onError(response.errorBody().string())
         }
       }
 
       override fun onFailure(call: Call<CharacterDetailApi>?, t: Throwable?) {
-        onSingleCharacterAvailable.onError(t?.message)
+        onError(t?.message)
       }
 
     })

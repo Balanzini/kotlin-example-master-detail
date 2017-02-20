@@ -10,15 +10,12 @@ interface CharacterDataSource {
 
     fun getAllCharacter(onCharacterAvailable: OnCharacterAvailable)
 
-    fun getCharacter(characterId : Int, onSingleCharacterAvailable: OnSingleCharacterAvailable)
+    fun getCharacter(characterId : Int, onSuccess: (CharacterDetail) -> Unit,
+                     onError: (String?) -> Unit)
 
     interface OnCharacterAvailable{
         fun onCharacterAvailable(characterList : List<CharacterBasic>)
         fun onError(message : String?)
     }
 
-    interface OnSingleCharacterAvailable{
-        fun onSingleCharacterAvailable(characterDetail: CharacterDetail)
-        fun onError(message:String?)
-    }
 }

@@ -18,21 +18,21 @@ import java.util.*
 @RunWith(KotlinTestRunner::class)
 class CharacterMapperTestKt {
 
-  internal var character1 = mock<CharacterBasicRetrofit> {
+  private var character1 = mock<CharacterBasicRetrofit> {
     on { name }.doReturn("character1")
     on { characterId }.doReturn(0)
     on { house }.doReturn("house")
     on { houseId }.doReturn(0)
     on { imageUrl }.doReturn("imageUrl")
   }
-  internal var character2 = mock<CharacterBasicRetrofit> {
+  private var character2 = mock<CharacterBasicRetrofit> {
     on { name }.doReturn("character2")
     on { characterId }.doReturn(0)
     on { house }.doReturn("house")
     on { houseId }.doReturn(0)
     on { imageUrl }.doReturn("imageUrl")
   }
-  internal var character3 = mock<CharacterBasicRetrofit> {
+  private var character3 = mock<CharacterBasicRetrofit> {
     on { name }.doReturn("character3")
     on { characterId }.doReturn(0)
     on { house }.doReturn("house")
@@ -52,7 +52,7 @@ class CharacterMapperTestKt {
   }
 
   @Test
-  fun doAction_doesSomething() {
+  fun mappterTest() {
     val characterBasics = mapper.charactersApiToCharactersModel(characterApiList)
 
     assertTrue(characterBasics[0].name === characterApiList[0].name)

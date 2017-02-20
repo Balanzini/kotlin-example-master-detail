@@ -10,15 +10,16 @@ class CharacterDetailPresenterImp(
     val getCharacterInteractor: GetCharacter) : CharacterDetailPresenter() {
 
   override fun getCharacter(characterId: Int) {
-    getCharacterInteractor.getCharacter(characterId, object : GetCharacter.OnCharacterAvailable {
-      override fun onSuccess(character: CharacterDetail) {
-        view?.onCharacterAvailable(character.name, character.last_name, character.birth,
-            character.gender, character.house.name, character.wand_description, character.patronus,
-            character.urlImage, character.house.detailBackground, character.house.primaryColor)
+    val success : (CharacterDetail)->Unit = {
+      with(it) {
+        view?.onCharacterAvailable(name, last_name, birth,
+            gender, house.name, wand_description, patronus,
+            urlImage, house.detailBackground, house.primaryColor)
       }
-
-      override fun onError(message: String?) {
-      }
+    }
+    getCharacterInteractor.getCharacter(characterId, {
+      success(it)
+    }, {
 
     })
   }

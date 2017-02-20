@@ -1,5 +1,6 @@
 package com.balanza.android.harrypotter.domain.interactor.character
 
+import com.balanza.android.harrypotter.data.character.retrofit.model.CharacterDetail
 import com.balanza.android.harrypotter.domain.repository.character.CharacterRepository
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -9,15 +10,15 @@ import org.jetbrains.anko.uiThread
  */
 class GetCharacterImp(val characterRepository: CharacterRepository) : GetCharacter {
   override fun getCharacter(characterId: Int,
-                              onCharacterAvailable: GetCharacter.OnCharacterAvailable) {
+                            callbackSuccess: (CharacterDetail) -> Unit, callbackError: (String) -> Unit) {
     doAsync {
       val character = characterRepository.getCharacter(characterId)
       uiThread {
         if(character != null) {
-          onCharacterAvailable.onSuccess(character)
+          callbackSuccess(character)
         }
         else{
-          onCharacterAvailable.onError("character unavailable")
+          callbackError("character unavailable")
         }
       }
     }

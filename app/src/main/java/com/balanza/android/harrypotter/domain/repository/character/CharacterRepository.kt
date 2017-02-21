@@ -11,7 +11,7 @@ interface CharacterRepository {
 
   fun fetchCharacter(characterId: Int, onCharacterDetails: OnCharacterDetails)
 
-  fun getCharacter(characterId: Int): CharacterDetail?
+  fun getCharacter(): CharacterDetail?
 
   fun clear()
 

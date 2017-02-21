@@ -10,7 +10,7 @@ import java.util.*
 /**
  * Created by balanza on 14/02/17.
  */
-class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : CharacterRepository {
+open class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : CharacterRepository {
 
   private var characterList = ArrayList<CharacterBasic>()
   private var currentCharacterDetail: CharacterDetail? = null
@@ -26,13 +26,16 @@ class CharacterRepositoryImp(private val dataSource: CharacterDataSource) : Char
   override fun fetchCharacter(characterId: Int,
                               onCharacterDetails: CharacterRepository.OnCharacterDetails) {
     dataSource.getCharacter(characterId, {
+      currentCharacterDetail = it
+      val characterBasic = getCharacterById(it.characterId)
+      currentCharacterDetail?.urlImage = characterBasic.imageUrl
       onCharacterDetails.onCharacterDetailsAvailable(it)
     }, {
       onCharacterDetails.onError(it)
     })
   }
 
-  override fun getCharacter(characterId: Int): CharacterDetail? {
+  override fun getCharacter(): CharacterDetail? {
     return currentCharacterDetail
 
   }

@@ -23,7 +23,7 @@ class CharacterDetailActivity : BaseActivity(), CharacterDetailView {
     setContentView(R.layout.character_details_layout)
 
     presenter.view = this
-    presenter.getCharacter(0)
+    presenter.getCharacter()
   }
 
   override fun onCharacterAvailable(name: String, lastName: String, birth: String, gender: String,

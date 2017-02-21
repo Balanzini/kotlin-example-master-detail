@@ -8,5 +8,5 @@ import com.balanza.android.harrypotter.ui.characterdetail.view.CharacterDetailVi
  */
 abstract class CharacterDetailPresenter : BasePresenter<CharacterDetailView>(){
 
-  abstract fun getCharacter(characterId : Int)
+  abstract fun getCharacter()
 }

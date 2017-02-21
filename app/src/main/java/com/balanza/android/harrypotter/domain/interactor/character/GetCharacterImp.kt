@@ -9,10 +9,10 @@ import org.jetbrains.anko.uiThread
  * Created by balanza on 17/02/17.
  */
 class GetCharacterImp(val characterRepository: CharacterRepository) : GetCharacter {
-  override fun getCharacter(characterId: Int,
+  override fun getCharacter(
                             callbackSuccess: (CharacterDetail) -> Unit, callbackError: (String) -> Unit) {
     doAsync {
-      val character = characterRepository.getCharacter(characterId)
+      val character = characterRepository.getCharacter()
       uiThread {
         if(character != null) {
           callbackSuccess(character)

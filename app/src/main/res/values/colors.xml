@@ -11,6 +11,7 @@
   <color name="primary_color_list">#0C0B09</color>
   <color name="item_shadow">#d6000000</color>
   <color name="item_selected_shadow">#8e000000</color>
+  <color name="list_background">#302B27</color>
 
   <!-- DETAILS -->
   <color name="detail_shadow">#8e000000</color>
@@ -20,4 +21,7 @@
   <color name="hufflepuff_primary">#CB9800</color>
   <color name="ravenclaw_primary">#006787</color>
   <color name="slytherin_primary">#688904</color>
+
+  <!-- LOADING -->
+  <color name="loading_background_color">#e4afafaf</color>
 </resources>

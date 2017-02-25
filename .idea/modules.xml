@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hploading/hploading.iml" filepath="$PROJECT_DIR$/hploading/hploading.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlin-example-master-detail.iml" filepath="$PROJECT_DIR$/kotlin-example-master-detail.iml" />
     </modules>
   </component>

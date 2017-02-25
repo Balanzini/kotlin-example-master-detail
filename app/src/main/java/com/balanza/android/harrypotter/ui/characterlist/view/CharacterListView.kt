@@ -8,4 +8,6 @@ import com.balanza.android.harrypotter.ui.View
  */
 interface CharacterListView : View{
   fun onCharactersAvailable(characterList : List<CharacterBasic>)
+
+  fun hideLoading()
 }

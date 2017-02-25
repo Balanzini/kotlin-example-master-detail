@@ -1,6 +1,9 @@
 <resources>
   <string name="app_name">Harry Potter</string>
 
+  <!-- LOADING -->
+  <string name="loading_text">Accio characters&#8230;</string>
+
   <!-- DETAILS -->
   <string name="detail_name">Name: </string>
   <string name="detail_last_name">Last name: </string>

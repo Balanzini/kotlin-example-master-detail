@@ -1,6 +1,7 @@
 package com.balanza.android.harrypotter.ui.characterlist.view
 
 import android.os.Bundle
+import android.view.View
 import com.balanza.android.harrypotter.R
 import com.balanza.android.harrypotter.app.base.BaseActivity
 import com.balanza.android.harrypotter.app.base.BaseApp
@@ -16,6 +17,7 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
   @Inject lateinit var presenter: CharacterListPresenter
 
   private var adapter = CharacterAdapter {
+    ll_loading.visibility = View.VISIBLE
     presenter.onItemClick(it.characterId)
   }
 
@@ -30,6 +32,7 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
 
     initOptionsAdapter()
     presenter.view = this
+    ll_loading.visibility = View.VISIBLE
     presenter.getCharacters()
   }
 
@@ -40,8 +43,13 @@ class CharacterListActivity : BaseActivity(), CharacterListView {
   // endregion
 
   override fun onCharactersAvailable(characterList: List<CharacterBasic>) {
+    hideLoading()
     adapter.setCharacters(characterList)
     srl_main_swipe_layout.isRefreshing = false
+  }
+
+  override fun hideLoading() {
+    ll_loading.visibility = View.GONE
   }
 
   private fun initOptionsAdapter() {

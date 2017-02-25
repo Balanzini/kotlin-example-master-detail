@@ -37,6 +37,7 @@ class CharacterListPresenterImp(private val navigator: Navigator,
   override fun onItemClick(position: Int) {
     fetchCharacter.fetchCharacter(position, object : FetchCharacter.OnCharacterAvailable {
       override fun onSuccess(character: CharacterDetail) {
+        view?.hideLoading()
         navigator.goToDetails(character.characterId)
       }
 

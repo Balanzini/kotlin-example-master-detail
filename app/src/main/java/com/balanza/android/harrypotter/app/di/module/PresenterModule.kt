@@ -5,6 +5,7 @@ import com.balanza.android.harrypotter.data.character.CharacterDataSource
 import com.balanza.android.harrypotter.domain.interactor.character.GetAllCharacters
 import com.balanza.android.harrypotter.domain.interactor.character.FetchCharacter
 import com.balanza.android.harrypotter.domain.interactor.character.GetCharacter
+import com.balanza.android.harrypotter.domain.interactor.character.GetPointsWin
 import com.balanza.android.harrypotter.ui.characterdetail.presenter.CharacterDetailPresenter
 import com.balanza.android.harrypotter.ui.characterdetail.presenter.CharacterDetailPresenterImp
 import com.balanza.android.harrypotter.ui.characterlist.presenter.CharacterListPresenter
@@ -20,12 +21,13 @@ class PresenterModule {
 
   @Provides
   fun provideCharacterListPresenter(navigator: Navigator,
-                                    getAllCharacters: GetAllCharacters, fetchCharacter: FetchCharacter): CharacterListPresenter {
+                                    getAllCharacters: GetAllCharacters,
+                                    fetchCharacter: FetchCharacter): CharacterListPresenter {
     return CharacterListPresenterImp(navigator, getAllCharacters, fetchCharacter)
   }
 
   @Provides
-  fun provideCharacterDetailPresenter(
-      getCharacter: GetCharacter): CharacterDetailPresenter = CharacterDetailPresenterImp(
-      getCharacter)
+  fun provideCharacterDetailPresenter(getCharacter: GetCharacter,
+                                      getPointsWin: GetPointsWin): CharacterDetailPresenter = CharacterDetailPresenterImp(
+      getCharacter, getPointsWin)
 }

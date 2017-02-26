@@ -16,4 +16,8 @@ class Slytherin : House(){
 
   override val primaryColor: Int
     get() = R.color.slytherin_primary
+
+  override val calculatePoints: (Int) -> Int = {
+    (it - (Math.random() * 10)).toInt()
+  }
 }

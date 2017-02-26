@@ -24,4 +24,8 @@ class InteractorModule {
   @Provides
   fun provideGetCharacter(characterRepository: CharacterRepository): GetCharacter = GetCharacterImp(
       characterRepository)
+
+  @Provides
+  fun provideGetPointsWin(characterRepository: CharacterRepository): GetPointsWin = GetPointsWinImp(
+      characterRepository)
 }

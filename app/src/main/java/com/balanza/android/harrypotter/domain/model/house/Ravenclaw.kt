@@ -17,4 +17,8 @@ class Ravenclaw : House() {
 
   override val primaryColor: Int
     get() = R.color.ravenclaw_primary
+
+  override val calculatePoints: (Int) -> Int = {
+    (it + (Math.random() * 10)).toInt()
+  }
 }

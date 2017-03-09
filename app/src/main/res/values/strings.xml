@@ -12,4 +12,5 @@
   <string name="detail_house">House: </string>
   <string name="detail_wand_description">Wand desc.: </string>
   <string name="detail_patronus">Patronus: </string>
+  <string name="drag_albus">Drag Albus to the image to assign points</string>
 </resources>

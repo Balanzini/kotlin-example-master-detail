@@ -16,4 +16,8 @@ class Hufflepuff : House() {
 
   override val primaryColor: Int
     get() = R.color.hufflepuff_primary
+
+  override val calculatePoints: (Int) -> Int = {
+    (it * (Math.random() * 4)).toInt()
+  }
 }

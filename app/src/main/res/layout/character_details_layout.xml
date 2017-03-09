@@ -141,4 +141,15 @@
           />
     </LinearLayout>
   </LinearLayout>
+
+
+  <ImageView
+      android:id="@+id/ivAlbus"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:layout_margin="50dp"
+      android:src="@drawable/albus"
+      />
 </RelativeLayout>

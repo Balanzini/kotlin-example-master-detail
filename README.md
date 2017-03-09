@@ -19,6 +19,9 @@ In developing progress.
 
 ### Change Log
 
+## V1.1
+* Add functions to assign points with Albus
+
 ## V1.0
 * Basic example of Master-Detail
 

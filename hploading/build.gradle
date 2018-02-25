@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion 25
-  buildToolsVersion "25.0.2"
+  buildToolsVersion '26.0.2'
 
   defaultConfig {
     minSdkVersion 14
@@ -17,6 +17,9 @@ android {
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    debug{
+      minifyEnabled false
     }
   }
   sourceSets {
